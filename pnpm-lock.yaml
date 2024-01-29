@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@robertsspaceindustries/sub':
-    specifier: 1.0.8
+    specifier: ^1.0.8
     version: 1.0.8
   commander:
     specifier: ^11.1.0

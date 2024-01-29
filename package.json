@@ -28,7 +28,7 @@
     "build": "tsup-node"
   },
   "dependencies": {
-    "@robertsspaceindustries/sub": "1.0.8",
+    "@robertsspaceindustries/sub": "^1.0.8",
     "commander": "^11.1.0",
     "klaw": "^4.1.0",
     "picocolors": "^1.0.0"
