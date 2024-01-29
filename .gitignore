@@ -9,8 +9,9 @@
 # production
 /dist
 
-# documentation
-/docs
+# testing
+/test
+/tests
 
 # misc
 .DS_Store
