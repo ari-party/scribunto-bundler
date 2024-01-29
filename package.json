@@ -30,7 +30,6 @@
   "dependencies": {
     "@robertsspaceindustries/sub": "^1.0.8",
     "commander": "^11.1.0",
-    "klaw": "^4.1.0",
     "picocolors": "^1.0.0"
   },
   "devDependencies": {
@@ -45,9 +44,9 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
+    "klaw": "^4.1.0",
     "prettier": "^3.2.4",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   }
 }
-
