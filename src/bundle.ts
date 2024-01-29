@@ -55,5 +55,7 @@ export default async function bundleProject() {
 
   fs.writeFileSync(outPath, prefix + main.trim() + suffix, 'utf-8');
 
-  ready(`Bundled ${modules.length.toLocaleString()} modules`);
+  ready(
+    `Bundled ${modules.length.toLocaleString()} module${modules.length === 1 ? '' : 's'}`,
+  );
 }
