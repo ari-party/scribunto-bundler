@@ -31,7 +31,7 @@ local _bundler_load, _bundler_register = (function(superRequire)
             end
 
             loaded[name] = loadingPlaceholder
-            loadedModule = modules[name](customRequire)
+            loadedModule = modules[name](load)
             loaded[name] = loadedModule
         end
 
