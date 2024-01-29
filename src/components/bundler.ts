@@ -14,10 +14,7 @@ export default function Bundler(modules: Module[]) {
         bundlerModuleTemplate,
         {
           name: module.name,
-          content: module.content, //.replace(
-          //     /(?<![\w])require\s*[( ]\s*['"](.*?)['"]\s*[) ]*/g,
-          //     '_bundler_require("$1")',
-          //   ),
+          content: module.content,
         },
         {
           prefix: '--{{',
