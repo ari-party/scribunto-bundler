@@ -19,4 +19,5 @@ export default defineConfig({
   define: {
     TEMPLATES: JSON.stringify(templates),
   },
+  banner: { js: '#!/usr/bin/env node' },
 });
