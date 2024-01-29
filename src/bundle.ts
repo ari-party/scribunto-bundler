@@ -15,7 +15,7 @@ export interface Module {
 
 export default async function bundleProject() {
   const workingDir = process.cwd();
-  const configPath = path.join(workingDir, `.${name}.js`);
+  const configPath = path.join(workingDir, '.bundler.js');
 
   info(`Using ${configPath}`);
 

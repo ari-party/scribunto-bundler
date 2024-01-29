@@ -1,10 +1,25 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import formatString from '@robertsspaceindustries/sub';
+
+import dirname from '../utils/dirname';
 
 import type { Module } from '../bundle';
 
-const bundlerManagerTemplate = TEMPLATES.bundler;
-const bundlerModuleTemplate = TEMPLATES.bundlerModule;
-const bundlerReturnTemplate = TEMPLATES.bundlerReturn;
+const bundlerDir = path.resolve(dirname, 'templates/bundler');
+const bundlerManagerTemplate = fs.readFileSync(
+  path.join(bundlerDir, 'manager.lua'),
+  'utf-8',
+);
+const bundlerModuleTemplate = fs.readFileSync(
+  path.join(bundlerDir, 'module.lua'),
+  'utf-8',
+);
+const bundlerReturnTemplate = fs.readFileSync(
+  path.join(bundlerDir, 'return.lua'),
+  'utf-8',
+);
 
 export default function Bundler(modules: Module[]) {
   const formattedModules = [];

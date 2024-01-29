@@ -2,37 +2,38 @@ import childProcess from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import formatString from '@robertsspaceindustries/sub';
+import klaw from 'klaw';
 
-import { event, ready, wait, warn } from './utils/log';
-import { name, version } from '../package.json';
+import dirname from './utils/dirname';
+import { error, info, ready, wait } from './utils/log';
+import { name } from '../package.json';
 
-const files = {
-  [`.${name}.js`]: TEMPLATES.config,
-  'package.json': formatString(TEMPLATES.package, {
-    name,
-    version,
-  }),
-  '.gitignore': TEMPLATES['.gitignore'],
-  'src/main.lua': '',
-};
+const templateDir = path.resolve(dirname, 'templates/create');
 
-export default function createProject() {
+export default async function createProject() {
   const workingDir = process.cwd();
 
-  for (const file of Object.keys(files)) {
-    const target = path.join(workingDir, file);
-    if (!fs.existsSync(target)) {
-      fs.mkdirSync(path.dirname(target), { recursive: true });
-      fs.writeFileSync(target, files[file], 'utf-8');
-      event(`Created file ${file}`);
-    } else warn(`File ${file} already exists`);
-  }
+  let filesCopied = 0;
+  for await (const file of klaw(templateDir))
+    if (file.stats.isFile()) {
+      const relative = path.relative(templateDir, file.path);
+      const targetPath = path.relative(workingDir, relative);
+
+      fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+      fs.copyFileSync(file.path, targetPath);
+      filesCopied += 1;
+    }
+  info(`Copied ${filesCopied} file${filesCopied === 1 ? '' : 's'}`);
 
   wait('Installing packages...');
-  childProcess.execSync(`npm install`, {
-    cwd: workingDir,
-  });
+  try {
+    childProcess.execSync(`npm install`, {
+      cwd: workingDir,
+    });
+  } catch (err) {
+    error(err);
+    process.exit(1);
+  }
 
   ready(`Base ${name} project created`);
 }
