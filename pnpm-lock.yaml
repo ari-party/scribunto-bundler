@@ -24,7 +24,7 @@ devDependencies:
     version: 3.0.6
   '@types/node':
     specifier: ^20.11.7
-    version: 20.11.9
+    version: 20.11.10
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.19.1
     version: 6.19.1(@typescript-eslint/parser@6.19.1)(eslint@8.56.0)(typescript@5.3.3)
@@ -616,7 +616,7 @@ packages:
     dev: true
 
   /@robertsspaceindustries/sub@1.0.8:
-    resolution: {integrity: sha512-MxhucbPVqTCAnF0u2wCrSa7wDEdSuiHV6Xzhi9HRXj71wsYxMiYm93795ziZ7YLo6jW32vufJ4cWQ7ZNtZY6AQ==}
+    resolution: {integrity: sha512-xXr+r4rxnq9zt2+HnWVxGZzx9x+2v0KHr3Mvu3dlI57Ygx+HYYNSbB7+bwQQwKZo472ZEbWec8W48zvK4jlJfA==}
     dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.6:
@@ -738,11 +738,11 @@ packages:
   /@types/klaw@3.0.6:
     resolution: {integrity: sha512-BErW5TrTz4nzt/c3VRGf0Bug4JyQJ1o807F4mAfXfvOzFZ8SKgFeHJ0T28Y1KtqlMEB+cUgN7S7CsyQDQ/qxqg==}
     dependencies:
-      '@types/node': 20.11.9
+      '@types/node': 20.11.10
     dev: true
 
-  /@types/node@20.11.9:
-    resolution: {integrity: sha512-CQXNuMoS/VcoAMISe5pm4JnEd1Br5jildbQEToEMQvutmv+EaQr90ry9raiudgpyDuqFiV9e4rnjSfLNq12M5w==}
+  /@types/node@20.11.10:
+    resolution: {integrity: sha512-rZEfe/hJSGYmdfX9tvcPMYeYPW2sNl50nsw4jZmRcaG0HIAb0WYEpsB05GOb53vjqpyE9GUhlDQ4jLSoB5q9kg==}
     dependencies:
       undici-types: 5.26.5
     dev: true
