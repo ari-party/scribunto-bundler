@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { performance } from 'node:perf_hooks';
+
+import todec from '2dec';
+import * as prettier from 'prettier';
 
 import Bundler from './components/bundler';
 import { error, event, info, ready } from './utils/log';
@@ -14,6 +18,7 @@ export interface Module {
 }
 
 export default async function bundleProject() {
+  const startTime = performance.now();
   const workingDir = process.cwd();
   const configPath = path.join(workingDir, '.bundler.js');
 
@@ -44,18 +49,25 @@ export default async function bundleProject() {
     event(`Loaded module ${module.name}`);
   }
 
-  const outPath = path.resolve(workingDir, config.out);
-
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-
   const prefix = config.prefix ? `${config.prefix.trim()}\n` : '';
   const suffix = config.suffix ? `\n${config.suffix.trim()}` : '';
 
   const main = Bundler(modules);
 
-  fs.writeFileSync(outPath, prefix + main.trim() + suffix, 'utf-8');
+  const outPath = path.relative(workingDir, config.out);
+
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+
+  fs.writeFileSync(
+    outPath,
+    await prettier.format(prefix + main.trim() + suffix, {
+      plugins: ['@prettier/plugin-lua'],
+      parser: 'lua',
+    }),
+    'utf-8',
+  );
 
   ready(
-    `Bundled ${modules.length.toLocaleString()} module${modules.length === 1 ? '' : 's'}`,
+    `Bundled ${modules.length.toLocaleString()} module${modules.length === 1 ? '' : 's'} in ${todec((performance.now() - startTime) / 1_000, 3)}s`,
   );
 }
