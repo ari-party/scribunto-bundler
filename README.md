@@ -8,13 +8,48 @@ A Lua bundler written in TypeScript for [Scribunto](https://www.mediawiki.org/wi
 ## Installation
 
 ```bash
-$ npm install scribunto-bundler
+$ npm install scribunto-bundler --global
 # or
-$ yarn install scribunto-bundler
-# or
-$ pnpm add scribunto-bundler
+$ pnpm add scribunto-bundler --global
 ```
 
 ## Usage
 
-T.B.D.
+### `create`
+
+Creates a [basic project](https://github.com/ari-party/scribunto-bundler/tree/main/templates/create) and installs scribunto-bundler locally using **npm**.
+
+```bash
+$ npx scribunto-bundler --create
+# or
+$ pnpm scribunto-bundler --create
+```
+
+### `bundle`
+
+Bundles the main lua file with its defined modules. Modules are only loaded once on [`require()`](https://www.lua.org/pil/8.1.html).
+
+```bash
+$ npm run bundle
+# or
+$ pnpm bundle
+```
+
+### Configuration
+
+```js
+/** @type {import("scribunto-bundler").Config} */
+export default {
+  prefix: 'Text that goes infront of the bundled code, e.g. license',
+  suffix: 'Text that goes after the bundled code',
+
+  main: 'src/main.lua', // Your main lua file
+  out: 'dist/bundled.lua', // The destination file for the bundle command
+  modules: [
+    {
+      name: 'util', // The name of the module you `require()`
+      path: 'util.lua', // Relative path from the folder the main file is in (e.g.: src/main.lua, src/util.lua)
+    },
+  ],
+};
+```

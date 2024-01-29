@@ -1,6 +1,9 @@
 {
   "type": "module",
+  "scripts": {
+    "bundle": "scribunto-bundler"
+  },
   "dependencies": {
-    "scribunto-bundler": "0.1.1"
+    "scribunto-bundler": "^0.1.4"
   }
 }
