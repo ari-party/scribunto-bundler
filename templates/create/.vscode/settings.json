@@ -1,5 +1,3 @@
 {
-  "Lua.diagnostics.globals": ["mw"],
-  "Lua.workspace.ignoreDir": ["dist"],
-  "Lua.diagnostics.ignoredFiles": "Enable"
+  "Lua.diagnostics.globals": ["mw"]
 }
