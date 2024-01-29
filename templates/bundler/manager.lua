@@ -1,10 +1,10 @@
-local _bundler_require, _bundler_register = (function(superRequire)
+local _bundler_load, _bundler_register = (function(superRequire)
     local loadingPlaceholder = { [{}] = true }
 
     local register
     local modules = {}
 
-    local customRequire
+    local load
     local loaded = {}
 
     register = function(name, body)
@@ -13,7 +13,7 @@ local _bundler_require, _bundler_register = (function(superRequire)
         end
     end
 
-    customRequire = function(name)
+    load = function(name)
         local loadedModule = loaded[name]
 
         if loadedModule then
@@ -38,5 +38,5 @@ local _bundler_require, _bundler_register = (function(superRequire)
         return loadedModule
     end
 
-    return customRequire, register
+    return load, register
 end)(require)

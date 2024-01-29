@@ -1,1 +1,1 @@
-return _bundler_require('bundler_main')
+return _bundler_load('bundler_main')
