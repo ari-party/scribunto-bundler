@@ -1,6 +1,0 @@
-{
-  "type": "module",
-  "dependencies": {
-    "scribunto-bundler": "0.1.1"
-  }
-}
