@@ -1,3 +1,3 @@
-_bundler_register('--{{name}}', function(require)
+_bundler_register('--{{name}}', function()
     --{{content}}
 end)

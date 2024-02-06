@@ -41,13 +41,17 @@ function formatLua(code: string): Promise<string> {
 
 function generateMain(modules: Module[]) {
   const formattedModules = [];
+
   for (const module of modules)
     formattedModules.push(
       formatString(
         bundlerModuleTemplate,
         {
           name: module.name,
-          content: module.content,
+          content: module.content.replace(
+            /(?<!\w)require[("' ]+(.*?)[)"' ]+/g,
+            '_bundler_load("$1")',
+          ),
         },
         {
           prefix: '--{{',

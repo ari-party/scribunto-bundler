@@ -7,12 +7,16 @@ local _bundler_load, _bundler_register = (function(superRequire)
     local load
     local loaded = {}
 
+    ---@param name string
+    ---@param body function
     register = function(name, body)
         if not modules[name] then
             modules[name] = body
         end
     end
 
+    ---@param name string
+    ---@return any
     load = function(name)
         local loadedModule = loaded[name]
 
@@ -31,7 +35,7 @@ local _bundler_load, _bundler_register = (function(superRequire)
             end
 
             loaded[name] = loadingPlaceholder
-            loadedModule = modules[name](load)
+            loadedModule = modules[name]()
             loaded[name] = loadedModule
         end
 
