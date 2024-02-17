@@ -22,7 +22,7 @@ Creates a [basic project](https://github.com/ari-party/scribunto-bundler/tree/ma
 ```bash
 $ npx scribunto-bundler --create
 # or
-$ pnpm scribunto-bundler --create
+$ pnpx scribunto-bundler --create
 ```
 
 ### `bundle`
