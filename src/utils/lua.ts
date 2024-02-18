@@ -66,6 +66,7 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
           (v) => v.path === requiredByPart.path,
         );
         if (moduleIndex === -1) continue;
+
         modules[moduleIndex].content = modules[moduleIndex].content.replace(
           customRequireRegex(requiredByPart.name),
           `_bundler_load("${id}")`,

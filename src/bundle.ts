@@ -28,9 +28,9 @@ const bundlerReturnTemplate = fs.readFileSync(
 );
 
 export interface Module {
+  id: string;
   path: string;
   content: string;
-  id: string;
   requiredBy: Array<{ name: string; path: string }>;
 }
 
@@ -42,7 +42,7 @@ function generateMain(modules: Module[]) {
       formatString(
         bundlerModuleTemplate,
         {
-          name: module.id as string,
+          id: module.id,
           content: module.content,
         },
         {
