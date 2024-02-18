@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A Lua bundler written in TypeScript for [Scribunto](https://www.mediawiki.org/wiki/Extension:Scribunto).
+Automatically detects require statements.
+> [!WARNING]  
+> This feature is still under development. Please report issues [here](https://github.com/ari-party/scribunto-bundler/issues).
 
 ## Installation
 
@@ -45,11 +48,5 @@ export default {
 
   main: 'src/main.lua', // Your main lua file
   out: 'dist/bundled.lua', // The destination file for the bundle command
-  modules: [
-    {
-      name: 'util', // The name of the module you `require()`
-      path: 'util.lua', // Relative path from the folder the main file is in (e.g.: src/main.lua, src/util.lua)
-    },
-  ],
 };
 ```

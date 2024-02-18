@@ -1,7 +1,7 @@
 {
   "name": "scribunto-bundler",
   "description": "Lua bundler for Scribunto",
-  "version": "0.1.6-c",
+  "version": "0.2.0",
   "author": "Astrid <git@astrid.email>",
   "license": "MIT",
   "type": "module",
@@ -31,12 +31,11 @@
   },
   "dependencies": {
     "2dec": "^1.0.5",
-    "@prettier/plugin-lua": "^0.0.3",
     "@robertsspaceindustries/sub": "^1.0.8",
     "commander": "^11.1.0",
     "klaw": "^4.1.0",
-    "picocolors": "^1.0.0",
-    "prettier": "^3.2.4"
+    "nanoid": "^5.0.5",
+    "picocolors": "^1.0.0"
   },
   "devDependencies": {
     "@types/klaw": "^3.0.6",

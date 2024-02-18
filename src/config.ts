@@ -4,8 +4,4 @@ export interface Config {
 
   main: string;
   out: string;
-  modules?: Array<{
-    name: string;
-    path: string;
-  }>;
 }

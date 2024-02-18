@@ -5,5 +5,4 @@ export default {
 
   main: 'src/main.lua',
   out: 'dist/bundled.lua',
-  modules: [],
 };

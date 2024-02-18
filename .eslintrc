@@ -34,6 +34,7 @@
     "no-console": "off",
     "consistent-return": "off",
     "no-restricted-syntax": "off",
+    "no-continue": "off",
     "import/order": [
       "warn",
       {
