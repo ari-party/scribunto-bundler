@@ -35,6 +35,7 @@
     "consistent-return": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
+    "no-await-in-loop": "off",
     "import/order": [
       "warn",
       {

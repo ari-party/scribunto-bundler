@@ -23,9 +23,11 @@ export default async function createProject() {
       fs.copyFileSync(file.path, targetPath);
       filesCopied += 1;
     }
+
   info(`Copied ${filesCopied} file${filesCopied === 1 ? '' : 's'}`);
 
   wait('Installing packages...');
+
   try {
     childProcess.execSync(`npm install`, {
       cwd: workingDir,

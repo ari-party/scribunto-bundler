@@ -14,8 +14,8 @@ import { name } from '../package.json';
 import type { Config } from '.';
 
 const bundlerDir = path.resolve(dirname, 'templates/bundler');
-const bundlerManagerTemplate = fs.readFileSync(
-  path.join(bundlerDir, 'manager.lua'),
+const bundlerResolverTemplate = fs.readFileSync(
+  path.join(bundlerDir, 'resolver.lua'),
   'utf-8',
 );
 const bundlerModuleTemplate = fs.readFileSync(
@@ -43,7 +43,7 @@ function generateMain(modules: Module[]) {
         bundlerModuleTemplate,
         {
           id: module.id,
-          content: module.content,
+          content: module.content.replaceAll(/\$/g, '$$$$'),
         },
         {
           prefix: '--{{',
@@ -52,7 +52,7 @@ function generateMain(modules: Module[]) {
     );
 
   return [
-    bundlerManagerTemplate,
+    bundlerResolverTemplate,
     formattedModules.join('\n'),
     bundlerReturnTemplate,
   ].join('\n');
@@ -65,7 +65,8 @@ export default async function bundleProject() {
 
   if (!fs.existsSync(configPath))
     return error(`Missing ${name} configuration file`);
-  info(`Using ${configPath}`);
+
+  info(`Using config: ${configPath}`);
 
   const { default: config }: { default: Config } = await import(
     `${os.platform() === 'win32' ? 'file://' : ''}${configPath}`
@@ -74,7 +75,9 @@ export default async function bundleProject() {
   const modules = await index(path.resolve(workingDir, config.main));
 
   const outPath = path.relative(workingDir, config.out);
+
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
+
   fs.writeFileSync(
     outPath,
     (config.prefix ? `${config.prefix.trim()}\n` : '') +

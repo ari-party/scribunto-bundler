@@ -36,6 +36,7 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
         ...namePath.slice(0, -1),
         `${namePath[namePath.length - 1]}.lua`,
       );
+
       if (fs.existsSync(thisDirFile)) targetFile = thisDirFile;
 
       const mainDirFile = path.resolve(
@@ -43,6 +44,7 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
         ...namePath.slice(0, -1),
         `${namePath[namePath.length - 1]}.lua`,
       );
+
       if (fs.existsSync(mainDirFile)) targetFile = mainDirFile;
 
       if (targetFile) {
@@ -55,7 +57,6 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
 
         if (existing)
           modules[modules.indexOf(existing)].requiredBy.push(requiredByObject);
-        // eslint-disable-next-line no-await-in-loop
         else await recursive(targetFile, false, requiredByObject);
       }
     }
