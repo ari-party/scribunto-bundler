@@ -5,8 +5,6 @@
 
 A Lua bundler written in TypeScript for [Scribunto](https://www.mediawiki.org/wiki/Extension:Scribunto).
 Automatically detects require statements.
-> [!WARNING]  
-> This feature is still under development. Please report issues [here](https://github.com/ari-party/scribunto-bundler/issues).
 
 ## Installation
 
