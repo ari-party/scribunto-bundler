@@ -39,6 +39,8 @@ $ pnpm bundle
 ### Configuration
 
 ```js
+// bundler.config.js
+
 /** @type {import("scribunto-bundler").Config} */
 export default {
   prefix: 'Text that goes infront of the bundled code, e.g. license',
