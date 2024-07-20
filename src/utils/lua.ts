@@ -36,16 +36,22 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
         ...namePath.slice(0, -1),
         `${namePath[namePath.length - 1]}.lua`,
       );
-
       if (fs.existsSync(thisDirFile)) targetFile = thisDirFile;
+      else {
+        const thisDirFileLuau = `${thisDirFile}u`;
+        if (fs.existsSync(thisDirFileLuau)) targetFile = thisDirFileLuau;
+      }
 
       const mainDirFile = path.resolve(
         path.dirname(mainLuaFile),
         ...namePath.slice(0, -1),
         `${namePath[namePath.length - 1]}.lua`,
       );
-
       if (fs.existsSync(mainDirFile)) targetFile = mainDirFile;
+      else {
+        const mainDirFileLuau = `${mainDirFile}u`;
+        if (fs.existsSync(mainDirFileLuau)) targetFile = mainDirFileLuau;
+      }
 
       if (targetFile) {
         const existing = modules.find((v) => v.path === targetFile);

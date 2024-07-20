@@ -6,6 +6,8 @@
 A Lua bundler written in TypeScript for [Scribunto](https://www.mediawiki.org/wiki/Extension:Scribunto).
 Automatically detects require statements.
 
+scribunto-bundler has support for `.lua` and `.luau` file extensions.
+
 ## Installation
 
 ```bash

@@ -12,6 +12,7 @@
 # testing
 /test
 /tests
+scribunto-bundler-*.tgz
 
 # misc
 .DS_Store
