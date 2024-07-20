@@ -27,7 +27,7 @@ export default async function index(mainLuaFile: string): Promise<Module[]> {
     });
 
     for (const match of [...fileContent.matchAll(requireRegex)]) {
-      const namePath = match[1].split('.');
+      const namePath = match[1].split('.').join('/').split('/');
 
       let targetFile: string | undefined;
 

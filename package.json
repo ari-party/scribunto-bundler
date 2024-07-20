@@ -1,7 +1,7 @@
 {
   "name": "scribunto-bundler",
   "description": "Lua bundler for Scribunto",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Astrid <git@astrid.email>",
   "license": "MIT",
   "type": "module",
