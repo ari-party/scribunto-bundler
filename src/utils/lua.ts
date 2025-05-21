@@ -11,7 +11,7 @@ const requireRegex = /(?<!\w)require[("' ]+(.*?)[)"' ]+/g;
 const escapeRegExp = (string: string) =>
   string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const customRequireRegex = (name: string) =>
-  new RegExp(`(?<!\\w)require[("' ](${escapeRegExp(name)})[)"' ]+`, 'g');
+  new RegExp(`(?<!\\w)require[("' ]+(${escapeRegExp(name)})[)"' ]+`, 'g');
 
 export default async function index(mainLuaFile: string): Promise<Module[]> {
   const modules: Module[] = [];
